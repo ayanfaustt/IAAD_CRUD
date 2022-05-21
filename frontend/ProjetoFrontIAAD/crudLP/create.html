@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Create</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Insira os dados nas lacunas abaixo</h1>
+    <br>
+    <div>
+        <label for="id_linguagem">Id linguagem</label>
+        <input type="number" id="id_linguagem" >
+        <input type="text" value="nome_linguagem" id="nome_linguagem">
+        <input type="text" value="ano_lançamento" id="ano_lancamento">
+        <button type="submit" onclick="lpPost()">Inserir Dados</button>
+    </div>
+    <script>
+         function lpPost(){
+            const idS = document.querySelector('#id_linguagem')
+            const id = parseInt(idS.value)
+            const nome = document.querySelector('#nome_linguagem').value;
+            const ano = document.querySelector('#ano_lancamento').value;
+            
+            
+            const URL = 'http://localhost:3000/add/linguagem_programacao';
+            const URLBASE = `${URL}?id_linguagem=${id}&nome_linguagem=${nome}&ano_lancamento=${ano}`
+            fetch(URLBASE, {method: 'POST',
+             headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err=>{
+                    console.log(err);
+                })
+        
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Update</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Atualize um dado pelo id</h1>
+    <br>
+    <div>
+        <label for="id_startup">id_startup:</label>
+        <input type="number" value="id_startup" id="id_startup">
+        <select id="dado">
+            <option value="nome_startup">nome_startup</option>
+            <option value="cidade_sede">cidade_sede</option>
+        </select> =
+        <input type="text" value="novo_dado" id="new_data">
+        <button type="submit" onclick="updateStartup()">Atualizar</button>
+    </div>
+    <script>
+        function updateStartup(){
+            const id_S = document.querySelector('#id_startup').value;
+            const id = parseInt(id_S);
+            console.log(typeof id)
+            const URLBASE = `http://localhost:3000/startup/update/${id}`;
+            const select = document.querySelector('#dado').value;
+            let update;
+            let URL;
+            let field;
+            if(select === 'nome_startup'){
+                field = select;
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?nome_startup=${update}`;
+            }else if (select === 'cidade_sede'){
+                field = select;
+                update = update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?cidade_sede=${update}`;
+
+            }
+
+
+            fetch(URL,{method: 'PUT',
+             body: JSON.stringify({
+                 id_startup: id,
+                 field: update
+             }),
+             headers:{"Accept": "application/json",
+                      "Allow": 'PUT'  
+                    }})
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err => console.log(err))
+
+        }
+    </script>
+</body>
+</html>

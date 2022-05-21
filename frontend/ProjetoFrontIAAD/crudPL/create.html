@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Create</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Insira os dados nas lacunas abaixo</h1>
+    <br>
+    <div>
+        <label for="id_programador">id_programador:</label>
+        <input type="number"  id="id_programador">
+        <label for="id_linguagem">id_linguagem:</label>
+        <input type="number"  id="id_linguagem">
+        <button type="submit" onclick="plPost()">Inserir Dados</button>
+        <span id="response"></span>
+
+    </div>
+    <script>
+         function plPost(){
+            const id_pS = document.querySelector('#id_programador');
+            const id_lS = document.querySelector('#id_linguagem');
+            const id_p = parseInt(id_pS.value);
+            const id_l = parseInt(id_lS.value);
+
+            const URL = 'http://localhost:3000/add/programador_linguagem';
+            fetch(`${URL}?id_programador=${id_p}&id_linguagem=${id_l}`, {method: 'POST',
+             headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then(data =>{
+                    const erro = document.querySelector('#response')
+                    erro.innerHTML = data.message
+                })
+                .catch(err=>{
+                    consolo
+                })
+        
+        }
+    </script>
+</body>
+</html>

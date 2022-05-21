@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Update</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Atualize um dado pelo id</h1>
+    <br>
+    <div>
+        <label for="id_programador">id_programador:</label>
+        <input type="number" value="id_programador" id="id_programador">
+            <select id="opcao">
+                <option value="id_startup">id_startup</option>
+                <option value="nome_programador">nome_programador</option>
+                <option value="gênero">gênero</option>
+                <option value="data_nascimento">data_nascimento</option>
+                <option value="email">email</option> 
+            </select> =
+            <input type="text" value="novo_dado" id="new_data">
+            <button type="submit" onclick="updateProgramador()">Atualizar</button>
+    </div>
+
+    <script>
+        function updateProgramador(){
+            const id_s = document.querySelector('#id_programador');
+            const id = parseInt(id_s.value);
+            const select = document.querySelector('#opcao').value;
+            let update;
+            let field;
+            let  URLBASE = `http://localhost:3000/programador/update/${id}`;
+            let queryUpdate;
+            let URL;
+            if(select === 'nome_programador'){
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?nome_programador=${update}`
+
+            }
+            if (select === 'id_startup'){
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?id_startup=${update}`
+            }
+
+            if (select === 'gênero'){
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?genero=${update}`
+            }
+
+            if (select === 'data_nascimento'){
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?data_nascimento=${update}`
+            }
+
+            if (select === 'email'){
+                update = document.querySelector("#new_data").value;
+                URL = `${URLBASE}?email=${update}`
+            }
+
+            console.log(URL);
+            
+            
+            
+            fetch(URL, {method: 'PUT', headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then( response =>console.log(response))
+                .catch(err => console.log(err))
+
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Create</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Insira os dados nas lacunas abaixo</h1>
+    <br>
+    <div>
+        <label for="id_programador">id:</label>
+        <input type="text" value="id_programador" id="id_programador">
+        <input type="text" value="nome_programador" id="nome">
+        <input type="text" value="gênero(M/F)" id="genero">
+        <input type="date" value="data_nascimento" id="nascimento">
+        <input type="email" value="email" id="email">
+        <label for="id_startup">id Startup:</label>
+        <input type="text" id="id_startup">
+        <button type="submit" onclick='programadorPost()' >Inserir Dados</button>
+        <span id="response"></span>
+    </div>
+
+    <script>
+        function programadorPost(){
+            const id_pS = document.querySelector('#id_programador');
+            const id_p = parseInt(id_pS.value);
+            const nome = document.querySelector('#nome').value;
+            const genero = document.querySelector('#genero').value;
+            const nascimento = document.querySelector('#nascimento').value;
+            console.log(nascimento);
+            const email = document.querySelector('#email').value;
+            const id_sS = document.querySelector('#id_startup').value;
+            const id_s = parseInt(id_sS);
+            
+            
+            const URL = 'http://localhost:3000/add/programador';
+            fetch(`${URL}?id_programador=${id_p}&nome_programador=${nome}&genero=${genero}&data_nascimento=${nascimento}&email=${email}&id_startup=${id_s}`,
+             {method: 'POST', headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then(data => {
+                    const aviso = document.querySelector('#response');
+                    aviso.innerHTML = data.message;
+                })
+                .catch(err=>{
+                    console.log(err);
+                })
+        
+        }
+    </script>
+</body>
+</html>

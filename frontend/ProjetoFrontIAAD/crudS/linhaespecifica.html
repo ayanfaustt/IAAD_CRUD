@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Linha especifica</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Digite o id da Startup</h1>
+    <div>
+        <input id="id_startup" type="number" value="id_startup">
+        <button type="submit" onclick="request()">Buscar</button>
+        <table id="table_startupOne">
+
+        </table>
+    </div>
+    <script>
+        function request (){
+            const input = document.querySelector('#id_startup');
+            const value = parseInt(input.value);
+            const URL = `http://localhost:3000/startup/${value}`;
+            
+            fetch(URL)
+                .then(response => response.json())
+                .then(data=>{
+                    console.log(data);
+                    const tabela = document.querySelector('#table_startupOne');
+                    tabela.innerHTML = '';
+                    const linhaInicial = document.createElement('tr');
+                    const td1Inicial = document.createElement('td');
+                    const td2Inicial = document.createElement('td');
+                    td1Inicial.innerHTML = 'Nome da Startup';
+                    td2Inicial.innerHTML = 'Cidade Sede';
+                    linhaInicial.appendChild(td1Inicial);
+                    linhaInicial.appendChild(td2Inicial);
+                    tabela.appendChild(linhaInicial);
+
+                    const linha = document.createElement('tr');
+                    const td1 = document.createElement('td');
+                    const td2 = document.createElement('td');
+
+                    td1.setAttribute('nome_startup', data.nome_startup);
+                    td2.setAttribute('cidade_sede',data.cidade_sede);
+                    td1.innerHTML = data.nome_startup;
+                    td2.innerHTML = data.cidade_sede;
+
+                    linha.appendChild(td1);
+                    linha.appendChild(td2);
+                    tabela.appendChild(linha);
+                    
+                });
+
+        };
+    </script>
+</body>
+</html>

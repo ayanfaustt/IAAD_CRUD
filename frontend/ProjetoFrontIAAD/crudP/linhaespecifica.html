@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Linha especifica</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Digite o id do Programador</h1>
+    <div>
+        <input type="number" value="id_programador" id='p_id'>
+        <button type="submit" onclick="request()">Buscar</button>
+        <table id="table_programadorOne">
+
+        </table>
+    </div>
+
+    <script>
+         function request (){
+            const input = document.querySelector('#p_id');
+            const value = parseInt(input.value);
+            const URL = `http://localhost:3000/programador/${value}`;
+            console.log(URL)
+            
+            fetch(URL)
+                .then(response => response.json())
+                .then(data=>{
+                    const options = {
+                        dateStyle: 'short'
+                    }
+                    let dataTratada = new Date(data.data_nascimento);
+                    let date = dataTratada.getDate() + ' ' + dataTratada.toLocaleString('pt-br', { month: "short" }) + ' ' + dataTratada.getFullYear()
+                    console.log(dataTratada);
+                    const tabela = document.querySelector('#table_programadorOne');
+                    tabela.innerHTML = '';
+                    const linhaInicial = document.createElement('tr');
+                    const td1Inicial = document.createElement('td');
+                    const td2Inicial = document.createElement('td');
+                    const td3Inicial = document.createElement('td');
+                    const td4Inicial = document.createElement('td');
+                    const td5Inicial = document.createElement('td');
+                    const td6Inicial = document.createElement('td');
+                    td1Inicial.innerHTML = 'Identificador';
+                    td2Inicial.innerHTML = 'Nome';
+                    td3Inicial.innerHTML = 'Gênero';
+                    td4Inicial.innerHTML = 'Data de Nascimento';
+                    td5Inicial.innerHTML = 'Email';
+                    td6Inicial.innerHTML = 'Startup'
+                    linhaInicial.appendChild(td1Inicial);
+                    linhaInicial.appendChild(td2Inicial);
+                    linhaInicial.appendChild(td3Inicial);
+                    linhaInicial.appendChild(td4Inicial);
+                    linhaInicial.appendChild(td5Inicial);
+                    linhaInicial.appendChild(td6Inicial);
+                    tabela.appendChild(linhaInicial);
+
+                    const linha = document.createElement('tr');
+                    const td1 = document.createElement('td');
+                    const td2 = document.createElement('td');
+                    const td3 = document.createElement('td');
+                    const td4 = document.createElement('td');
+                    const td5 = document.createElement('td');
+                    const td6 = document.createElement('td');
+
+                    td1.setAttribute('id_programador', data.id_programador);
+                    td2.setAttribute('nome_programador',data.nome_programador);
+                    td1.innerHTML = data.id_programador;
+                    td2.innerHTML = data.nome_programador;
+                    td3.innerHTML = data.genero;
+                    td4.innerHTML = date;
+                    td5.innerHTML = data.email;
+                    td6.innerHTML = data.id_startup;
+
+                    linha.appendChild(td1);
+                    linha.appendChild(td2);
+                    linha.appendChild(td3);
+                    linha.appendChild(td4);
+                    linha.appendChild(td5);
+                    linha.appendChild(td6);
+                    tabela.appendChild(linha);
+                    
+                });
+
+        };
+    </script>
+</body>
+</html>

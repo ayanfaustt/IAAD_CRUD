@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Update</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Atualize um dado pelo id</h1>
+    <br>
+    <div>
+        <label for="id_linguagem">id_linguagem:</label>
+        <input type="number" value="id_linguagem" id="id_linguagem">
+        <select id="opcao">
+            <option value="nome_linguagem">nome_linguagem</option>
+            <option value="ano_lançamento">ano_lançamento</option>
+        </select>
+        =
+        <input type="text" value="novo_dado" id="new_data"> 
+        <button type="submit" onclick="putLp()">Atualizar</button>
+    </div>
+    <script>
+        function putLp(){
+            const id_s = document.querySelector('#id_linguagem');
+            const id = parseInt(id_s.value);
+            const select = document.querySelector('#opcao').value;
+            let update;
+            let field;
+            let  URLBASE = `http://localhost:3000/linguagem_programacao/update/${id}`;
+            let queryUpdate;
+            let URL;
+            if(select === 'nome_linguagem'){
+                update = document.querySelector("#new_data").value;
+                queryUpdate = {
+                id_linguagem: id,
+                nome_linguagem: update,
+                
+            }; 
+                // `${URL}?id_linguagem=${id}&nome_linguagem=${nome}&ano_lancamento=${ano}`
+                URL = `${URLBASE}?nome_linguagem=${update}`
+
+            }
+            if (select === 'ano_lançamento'){
+                update = document.querySelector("#new_data").value;
+                queryUpdate = {
+                id_linguagem: id,
+                ano_lancamento: update,
+                                 
+                }; 
+                URL = `${URLBASE}?ano_lançamento=${update}`
+
+            }
+
+            console.log(URL);
+            console.log(queryUpdate);
+            console.log(JSON.stringify(queryUpdate));
+            const data = JSON.stringify(queryUpdate);
+            
+            
+            
+            fetch(URL, {method: 'PUT', headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then( response =>console.log(response))
+                .catch(err => console.log(err))
+
+            
+            
+            
+        }
+
+    </script>
+</body>
+</html>

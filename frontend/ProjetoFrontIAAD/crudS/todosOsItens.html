@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os dados</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Startups cadastradas: </h1>
+    <div>
+        <table id="table_startupAll">
+            <tr>
+                <td>
+                    Identificador
+                </td>
+                <td>
+                    Startup
+                </td>
+                <td>
+                    Cidade Sede
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+            function request(){
+                const URL = 'http://localhost:3000/startup';
+
+                fetch(URL)
+                    .then(response => response.json())
+                    .then( data=>{
+                        console.log(data)
+                        const tabela = document.querySelector('#table_startupAll');
+
+                        data.map((item) =>{
+                            const linha = document.createElement('tr')
+                            const td1 = document.createElement('td');
+                            const td2 = document.createElement('td');
+                            const td3 = document.createElement('td');
+                            td1.setAttribute('id_startup', item.id_startup);
+                            td1.innerHTML = item.id_startup;
+                            td2.setAttribute('nome_startup', item.nome_startup);
+                            td2.innerHTML = item.nome_startup;
+                            td3.setAttribute('cidade_sede', item.cidade_sede);
+                            td3.innerHTML = item.cidade_sede;
+
+                            linha.appendChild(td1);
+                            linha.appendChild(td2);
+                            linha.appendChild(td3)
+                            tabela.appendChild(linha);
+            });
+                    })
+
+            }
+
+            request();
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os dados</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1> Programadores Cadastrados: </h1>
+    <div>
+        <table id="table_programadorAll">
+            <tr>
+                <td>
+                    Identificador
+                </td>
+                <td>
+                    Nome
+                </td>
+                <td>
+                    Gênero
+                </td>
+                <td>
+                    Data de Nascimento
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Startup
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        
+            function request(){
+                const URL = 'http://localhost:3000/programador';
+
+                fetch(URL)
+                    .then(response => response.json())
+                    .then( data=>{
+                        console.log(data)
+                        const tabela = document.querySelector('#table_programadorAll');
+
+                        data.map((item) =>{
+                            let dataTratada = new Date(item.data_nascimento);
+                            let date = dataTratada.getDate() + ' ' + dataTratada.toLocaleString('pt-br', { month: "short" }) + ' ' + dataTratada.getFullYear()
+                            const linha = document.createElement('tr');
+                            const td1 = document.createElement('td');
+                            const td2 = document.createElement('td');
+                            const td3 = document.createElement('td');
+                            const td4 = document.createElement('td');
+                            const td5 = document.createElement('td');
+                            const td6 = document.createElement('td');
+                            td1.setAttribute('id_programador', item.id_programador);
+                            td1.innerHTML = item.id_programador;
+                            td2.setAttribute('nome_programador', item.nome_programador);
+                            td2.innerHTML = item.nome_programador;
+                            td3.setAttribute('genero', item.genero);
+                            td3.innerHTML = item.genero;
+                            td4.setAttribute('data_nascimento', item.data_nascimento);
+                            td4.innerHTML = date;
+                            td5.setAttribute('email', item.email);
+                            td5.innerHTML = item.email;
+                            td6.setAttribute('id_startup', item.id_startup);
+                            td6.innerHTML = item.id_startup;
+                            console.log(td5.innerHTML)        
+                            
+       
+
+
+                            linha.appendChild(td1);
+                            linha.appendChild(td2);
+                            linha.appendChild(td3);
+                            linha.appendChild(td4);
+                            linha.appendChild(td5);
+                            linha.appendChild(td6);
+                            tabela.appendChild(linha);
+            });
+                    })
+
+            }
+        
+        request();
+    </script>
+</body>
+</html>

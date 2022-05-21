@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Delete</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Delete o dado com o id_startup da Startup</h1>
+    <br>
+    <div>
+        <input type="text" value="id_startup" id="input_delete_startup">
+        <button type="submit" id="btn_delete_startup" onclick="deleteStartup()">Deletar</button>
+        <span id="reponse"></span>
+    </div>
+    <script>
+          function deleteStartup(){
+            const startup = document.querySelector('#input_delete_startup');
+            const startup_id = parseInt(startup.value)
+            console.log(typeof(startup_id))
+            const URL = `http://localhost:3000/startup/delete/${startup_id}`;
+            console.log(URL)
+            const resposta = document.querySelector('#reponse');
+            resposta.innerHTML = '';
+            fetch(URL, {method:'DELETE'})
+                .then(response => response.json())
+                .then(data=>{
+                    resposta.innerHTML=data.message;
+                })
+        }
+    </script>
+</body>
+</html>

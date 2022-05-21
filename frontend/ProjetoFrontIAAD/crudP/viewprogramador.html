@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Programador</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <div>
+        <h1>Informações dos Programadores</h1>
+
+        <table id="viewProgramador">
+
+        </table>
+    </div>
+    <script>
+
+function request(){
+                const URL = 'http://localhost:3000/viewprogramador';
+
+                fetch(URL)
+                    .then(response => response.json())
+                    .then( data=>{
+                        console.log(data)
+                        const tabela = document.querySelector('#viewProgramador');
+                        const name = document.createElement('td');
+                        const prog = document.createElement('td');
+                        const email = document.createElement('td');
+                        const qntd = document.createElement('td');
+
+                        name.innerHTML = 'Startup';
+                        prog.innerHTML = 'Programadores';
+                        email.innerHTML = 'Email';
+                        qntd.innerHTML = 'Quantidade'
+
+                        const linha2 = document.createElement('tr');
+                        linha2.appendChild(name);
+                        linha2.appendChild(prog);
+                        linha2.appendChild(email);
+                        linha2.appendChild(qntd);
+                        tabela.appendChild(linha2)
+
+
+                        data.map((item) =>{
+                            let dataTratada = new Date(item.data_nascimento);
+                            let date = dataTratada.getDate() + ' ' + dataTratada.toLocaleString('pt-br', { month: "short" }) + ' ' + dataTratada.getFullYear()
+                            const linha = document.createElement('tr');
+                            const td1 = document.createElement('td');
+                            const td2 = document.createElement('td');
+                            const td3 = document.createElement('td');
+                            const td4 = document.createElement('td');
+                         
+                            td1.setAttribute('startup', item.Nome_Startup);
+                            td1.innerHTML = item.Nome_Startup;
+                            td2.setAttribute('nome_programador', item.Programadores);
+                            td2.innerHTML = item.Programadores;
+                            td3.setAttribute('genero', item.genero);
+                            td3.innerHTML = item.email;
+                            td4.setAttribute('data_nascimento', item.data_nascimento);
+                            td4.innerHTML = item.contador;
+                          
+       
+
+
+                            linha.appendChild(td1);
+                            linha.appendChild(td2);
+                            linha.appendChild(td3);
+                            linha.appendChild(td4);
+                    
+                            tabela.appendChild(linha);
+            });
+                    })
+
+            }
+        
+        request();
+    </script>
+</body>
+</html>

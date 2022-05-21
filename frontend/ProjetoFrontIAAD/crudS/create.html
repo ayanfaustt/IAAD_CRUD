@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Create</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Insira os dados nas lacunas abaixo</h1>
+    <br>
+    <div>
+        <input type="number" id="input_id_startup">
+        <input type="text" value="nome" id="input_nome_startup">
+        <input type="text" value="cidade_sede" id="input_cidade_sede">
+        <button onclick="startupPost()" type="submit">Inserir Dados</button>
+        <span id="response"></span>
+    </div>
+    <script>
+        function startupPost(){
+            const idS = document.querySelector('#input_id_startup')
+            const id = parseInt(idS.value)
+            const nome = document.querySelector('#input_nome_startup').value;
+            const cidade = document.querySelector('#input_cidade_sede').value;
+            const data = {
+                id_startup: id,
+                nome_startup: nome,
+                cidade_sede: cidade,
+            }
+            console.log(data);
+            
+            const URL = 'http://localhost:3000/add/startup';
+            fetch(`${URL}?id_startup=${id}&nome_startup=${nome}&cidade_sede=${cidade}`, {method: 'POST',
+             headers:{"Accept": "application/json"}})
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err=>{
+                    console.log(err);
+                })
+        
+        }
+
+    </script>
+</body>
+</html>

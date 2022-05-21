@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
+    <title>Linha especifica</title>
+</head>
+<header>
+    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+</header>
+<body>
+    <h1>Digite o id da linguagem_programação</h1>
+    <div>
+        <input type="number" value="id_linguagem" id="input_id_lp">
+        <button onclick="request()">Buscar</button>
+        <table id="table_linguagemProgramacaoOne">
+
+        </table>
+    </div>
+    <script>
+        function request (){
+            const input = document.querySelector('#input_id_lp');
+            const value = parseInt(input.value);
+            const URL = `http://localhost:3000/linguagem_programacao/${value}`;
+            
+            fetch(URL)
+                .then(response => response.json())
+                .then(data=>{
+                    console.log(data);
+                    const tabela = document.querySelector('#table_linguagemProgramacaoOne');
+                    tabela.innerHTML = '';
+                    const linhaInicial = document.createElement('tr');
+                    const td1Inicial = document.createElement('td');
+                    const td2Inicial = document.createElement('td');
+                    td1Inicial.innerHTML = 'Linguagem';
+                    td2Inicial.innerHTML = 'Ano de Lançamento';
+                    linhaInicial.appendChild(td1Inicial);
+                    linhaInicial.appendChild(td2Inicial);
+                    tabela.appendChild(linhaInicial);
+
+                    const linha = document.createElement('tr');
+                    const td1 = document.createElement('td');
+                    const td2 = document.createElement('td');
+
+                    td1.setAttribute('nome_startup', data.nome_startup);
+                    td2.setAttribute('cidade_sede',data.cidade_sede);
+                    td1.innerHTML = data.nome_linguagem;
+                    td2.innerHTML = data.ano_lancamento;
+
+                    linha.appendChild(td1);
+                    linha.appendChild(td2);
+                    tabela.appendChild(linha);
+                    
+                });
+
+        };
+    </script>
+</body>
+</html>

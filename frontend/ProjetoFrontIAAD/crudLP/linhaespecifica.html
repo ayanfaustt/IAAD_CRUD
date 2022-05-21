@@ -9,13 +9,15 @@
     <title>Linha especifica</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Página inicial</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1 class="title_pag">Digite o id da linguagem de programação</h1>
-    <div>
+    <h1 class="title_pag">Digite o iD da linguagem</h1>
+    <div class="labels">
         <input type="number" value="id_linguagem" id="input_id_lp">
-        <button onclick="request()">Buscar</button>
+        <button id="submit_button" onclick="request()">Buscar</button>
         <table id="table_linguagemProgramacaoOne">
 
         </table>

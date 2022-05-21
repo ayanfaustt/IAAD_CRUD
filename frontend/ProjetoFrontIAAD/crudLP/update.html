@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Update</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Atualize um dado pelo id</h1>
+    <h1 class="title_pag">Atualize a linguagem pelo ID</h1>
     <br>
-    <div>
-        <label for="id_linguagem">id_linguagem:</label>
-        <input type="number" value="id_linguagem" id="id_linguagem">
+    <div class="labels">
+        <label for="id_linguagem">ID da linguagem</label>
+        <input style="width: 140px;" type="number" value="id_linguagem" id="id_linguagem">
+        <label for="nome_linguagem">Dado a ser atualizado</label>
         <select id="opcao">
-            <option value="nome_linguagem">nome_linguagem</option>
-            <option value="ano_lançamento">ano_lançamento</option>
+            <option value="nome_linguagem">Nome da linguagem</option>
+            <option value="ano_lançamento">Ano de lançamento</option>
         </select>
         =
-        <input type="text" value="novo_dado" id="new_data"> 
-        <button type="submit" onclick="putLp()">Atualizar</button>
+        <label for="new_data">Novo dado</label>
+        <input type="text" id="new_data"> 
+        <button id="submit_button" type="submit" onclick="putLp()">Atualizar</button>
     </div>
     <script>
         function putLp(){

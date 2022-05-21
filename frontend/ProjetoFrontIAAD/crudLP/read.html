@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Read</title>
     
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Escolha como quer visualizar sua tabela</h1>
-    <div>
-        <a href="./todosOsItens.html"><button>Visualizar Todos os Itens</button></a>
+    <h1 class="title_pag">Escolha como quer visualizar sua tabela</h1>
+    <div class="labels" style="display: flex; flex-direction: row;">
+        <button id="submit_button" style="margin-left: 450px; width: 300px;">
+            <a href="./todosOsItens.html">Visualizar todos os itens</a>
+        </button>
         <br>
-        <a href="./linhaespecifica.html"><button type="submit">Visualizar linha específica</button> </a>
+        <button type="submit" id="submit_button" style="margin-right: 450px; width: 300px;">
+            <a href="./linhaespecifica.html">Visualizar específico</a>
+        </button>
         <br>
     </div>
-    
 </body>
 </html>

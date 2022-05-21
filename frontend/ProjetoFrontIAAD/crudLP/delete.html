@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Delete</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Delete o dado com o nome da Linguagem de Programação &#x1F4BB</h1>
+    <h1 class="title_pag">Delete usando o ID a linguagem&#x1F4BB</h1>
     <br>
-    <div>
-        <input type="text" value="nome_linguagem" id="input_id_lp">
-        <button type="submit" onclick="deleteLinguagem()">Deletar</button>
+    <div class="labels">
+        <label for="nome_linguagem">Insira o ID da linguagem</label>
+        <input type="text" id="input_id_lp">
+        <button id="submit_button" type="submit" onclick="deleteLinguagem()">Deletar</button>
         <span id="response"></span>
     </div>
     <script>

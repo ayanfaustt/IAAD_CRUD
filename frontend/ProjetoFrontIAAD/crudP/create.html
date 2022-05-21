@@ -9,21 +9,33 @@
     <title>Create</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Insira os dados nas lacunas abaixo</h1>
+    <h1 class="title_pag">Insira os dados nos campos abaixo</h1>
     <br>
-    <div>
-        <label for="id_programador">id:</label>
-        <input type="text" value="id_programador" id="id_programador">
-        <input type="text" value="nome_programador" id="nome">
-        <input type="text" value="gênero(M/F)" id="genero">
-        <input type="date" value="data_nascimento" id="nascimento">
-        <input type="email" value="email" id="email">
-        <label for="id_startup">id Startup:</label>
+    <div class="labels">
+        <label for="id_programador">ID do programador</label>
+        <input type="text" id="id_programador">
+
+        <label for="nome"> Nome do programador</label>
+        <input type="text" id="nome">
+
+        <label for="genero">Gênero (M/F)</label>
+        <input type="text" id="genero">
+
+        <label for="nascimento">Data de nascimento</label>
+        <input type="date" value="DD/MM/AAAA" id="nascimento">
+
+        <label for="email">Endereço de E-mail</label>
+        <input type="email" id="email">
+
+        <label for="id_startup">ID da Startup</label>
         <input type="text" id="id_startup">
-        <button type="submit" onclick='programadorPost()' >Inserir Dados</button>
+
+        <button class="submit_buttons" type="submit" onclick='programadorPost()' >Inserir Dados</button>
         <span id="response"></span>
     </div>
 

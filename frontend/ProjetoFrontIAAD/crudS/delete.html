@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Delete</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Delete o dado com o id_startup da Startup</h1>
+    <h1 class="title_pag">Remova usando o ID da startup</h1>
     <br>
-    <div>
-        <input type="text" value="id_startup" id="input_delete_startup">
-        <button type="submit" id="btn_delete_startup" onclick="deleteStartup()">Deletar</button>
+    <div class="labels">
+        <label for="input_delete_startup">Insira o ID da startup</label>
+        <input type="text" id="input_delete_startup">
+        
+        <button class="submit_buttons" type="submit" id="btn_delete_startup" onclick="deleteStartup()">Deletar</button>
         <span id="reponse"></span>
     </div>
     <script>

@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Update</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    </button>
 </header>
 <body>
-    <h1>Atualize um dado pelo id</h1>
+    <h1 class="title_pag">Atualize usando o ID</h1>
     <br>
-    <div>
-        <label for="id_programador">id_programador:</label>
-        <input type="number" value="id_programador" id="id_programador">
-            <select id="opcao">
+    <div class="labels">
+        <label for="id_programador">ID do Programador</label>
+        <input style="width: 25%;" type="number" value="id_programador" id="id_programador">
+            <select style="width: 25%;margin-top: 2.5%" id="opcao">
                 <option value="id_startup">id_startup</option>
                 <option value="nome_programador">nome_programador</option>
-                <option value="gênero">gênero</option>
+                <option value="gênero">genero</option>
                 <option value="data_nascimento">data_nascimento</option>
                 <option value="email">email</option> 
-            </select> =
-            <input type="text" value="novo_dado" id="new_data">
-            <button type="submit" onclick="updateProgramador()">Atualizar</button>
+            </select> 
+            =
+            <label for="new_data">Novo dado</label>
+            <input type="text" id="new_data">
+            <button class="submit_buttons" type="submit" onclick="updateProgramador()">Atualizar</button>
     </div>
-
     <script>
         function updateProgramador(){
             const id_s = document.querySelector('#id_programador');

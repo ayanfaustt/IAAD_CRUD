@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <title>Todos os dados</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Relação de Programadores e Linguagens</h1>
-    <table id="table_plAll">
-
-    </table>
+    <h1 class="title_pag">Relação de Programadores e Linguagens</h1>
+    <div class="labels">
+        <table class="tabela" id="table_plAll">
+        </table>
+    </div>
     <script>
         function request(){
                 const URL = 'http://localhost:3000/programador_linguagem';

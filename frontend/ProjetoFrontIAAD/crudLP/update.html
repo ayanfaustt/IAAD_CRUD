@@ -19,15 +19,16 @@
     <div class="labels">
         <label for="id_linguagem">ID da linguagem</label>
         <input style="width: 140px;" type="number" value="id_linguagem" id="id_linguagem">
-        <label for="nome_linguagem">Dado a ser atualizado</label>
+
+        <label for="opcao">Dado a ser atualizado</label>
         <select id="opcao">
-            <option value="nome_linguagem">Nome da linguagem</option>
-            <option value="ano_lançamento">Ano de lançamento</option>
+            <option value="nome_linguagem">nome_linguagem</option>
+            <option value="ano_lançamento">ano_lancamento</option>
         </select>
         =
         <label for="new_data">Novo dado</label>
         <input type="text" id="new_data"> 
-        <button id="submit_button" type="submit" onclick="putLp()">Atualizar</button>
+        <button class="submit_buttons" type="submit" onclick="putLp()">Atualizar</button>
     </div>
     <script>
         function putLp(){

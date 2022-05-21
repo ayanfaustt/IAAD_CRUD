@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Delete</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Delete o dado com o id do Programador &#x1F4BB</h1>
+    <h1 class="title_pag">Remova com o ID Programador &#x1F4BB</h1>
     <br>
-    <div>
-        <input type="text" value="id_programador" id="delete_programador">
-        <button type="submit" onclick="deleteProgramador()">Deletar</button>
+    <div class="labels">
+        <label for="delete_programador">ID do programador</label>
+        <input type="text" id="delete_programador">
+        <button class="submit_buttons" type="submit" onclick="deleteProgramador()">Deletar</button>
         <span id="response"></span>
     </div>
     <script>

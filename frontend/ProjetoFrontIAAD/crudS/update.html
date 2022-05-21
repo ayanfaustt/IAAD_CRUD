@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="shortcut icon" href="../favicon-32x32.png" type="image/x-icon">
     <title>Update</title>
 </head>
 <header>
-    <a href="../bancostartup.html">Voltar Pag tabelas</a>
+    <button class="home_button">
+        <a href="../bancostartup.html">Página inicial</a>
+    </button>
 </header>
 <body>
-    <h1>Atualize um dado pelo id</h1>
+    <h1 class="title_pag">Atualize a startup pelo ID</h1>
     <br>
-    <div>
-        <label for="id_startup">id_startup:</label>
-        <input type="number" value="id_startup" id="id_startup">
+    <div class="labels">
+        <label for="id_startup">ID da startup</label>
+        <input type="number" id="id_startup">
+
+        <label for="dado">Dado a ser atualizado</label>
         <select id="dado">
             <option value="nome_startup">nome_startup</option>
             <option value="cidade_sede">cidade_sede</option>
-        </select> =
-        <input type="text" value="novo_dado" id="new_data">
-        <button type="submit" onclick="updateStartup()">Atualizar</button>
+        </select> 
+        =
+        <input type="text" id="new_data">
+        <button class="submit_buttons" type="submit" onclick="updateStartup()">Atualizar</button>
     </div>
     <script>
         function updateStartup(){

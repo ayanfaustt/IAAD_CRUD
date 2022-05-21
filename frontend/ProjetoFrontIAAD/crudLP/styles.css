@@ -104,4 +104,9 @@ text-decoration: none;
     font-weight: bold;
     border: 1px solid cyan;
     border-radius: 8px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.titulo_coluna {
+    background-color: #005C59;
 }

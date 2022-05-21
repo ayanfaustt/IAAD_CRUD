@@ -111,3 +111,7 @@ text-decoration: none;
 .titulo_coluna {
     background-color: #005C59;
 }
+#table_linguagemProgramacaoOne {
+    margin-inline: center;
+    font-size: 20px;
+}

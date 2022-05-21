@@ -19,7 +19,7 @@
         <input style="margin-top: 0%;width: 40%;" id="id_startup" type="number" value="id_startup">
         <button style="margin-top: 0%;font-size: 25px;" class="submit_buttons" type="submit" onclick="request()">Buscar</button>
     </div>
-    <table class="tabela, tabela_One" id="table_startupOne">
+    <table class="tabela tabela_One" id="table_startupOne" style="margin-left:43% ;">
     </table>
     <script>
         function request (){
@@ -36,6 +36,7 @@
                     const linhaInicial = document.createElement('tr');
                     const td1Inicial = document.createElement('td');
                     const td2Inicial = document.createElement('td');
+                    linhaInicial.className = 'titulo_coluna'
                     td1Inicial.innerHTML = 'Nome da Startup';
                     td2Inicial.innerHTML = 'Cidade Sede';
                     linhaInicial.appendChild(td1Inicial);

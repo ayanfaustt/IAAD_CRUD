@@ -126,7 +126,9 @@ body {
 }
 
 .tabela_One {
-    margin-left: 25%;
+    text-align: center;
+    margin-top: 2.5%;
+    margin-left: 36%;
     margin-right: 25%;
     font-size: 15px;
     font-weight: bold;

@@ -19,7 +19,7 @@
         <input style="margin-top: 0%;width: 40%;" type="number" value="id_programador" id='p_id'>
         <button style="margin-top: 0%;font-size: 25px;" class="submit_buttons" type="submit" onclick="request()">Buscar</button>
     </div>
-    <table class="tabela, tabela_One" id="table_programadorOne">
+    <table class="tabela tabela_One" id="table_programadorOne">
     </table>
     <script>
          function request (){
@@ -40,6 +40,7 @@
                     const tabela = document.querySelector('#table_programadorOne');
                     tabela.innerHTML = '';
                     const linhaInicial = document.createElement('tr');
+                    linhaInicial.className = 'titulo_coluna'
                     const td1Inicial = document.createElement('td');
                     const td2Inicial = document.createElement('td');
                     const td3Inicial = document.createElement('td');

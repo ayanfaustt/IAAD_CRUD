@@ -18,6 +18,7 @@
         <table class="tabela" id="table_plAll">
         </table>
     </div>
+    <span id="#response"></span>
     <script>
         function request(){
                 const URL = 'http://localhost:3000/programador_linguagem';
@@ -28,10 +29,11 @@
                         console.log(data)
                         const tabela = document.querySelector('#table_plAll');
                         const linha1 = document.createElement('tr');
+                        linha1.className = 'titulo_coluna'
                         const programador = document.createElement('td');
                         const linguagem = document.createElement('td');
-                        programador.innerHTML = 'Programador';
-                        linguagem.innerHTML = 'Linguagem'
+                        programador.innerHTML = 'Linguagem';
+                        linguagem.innerHTML = 'Programador'
                         linha1.appendChild(programador);
                         linha1.appendChild(linguagem);
                         tabela.appendChild(linha1)
@@ -51,7 +53,9 @@
                             linha.appendChild(td1);
                             linha.appendChild(td2);
                             tabela.appendChild(linha);
-            });
+                           
+                        });
+                        
                     })
 
             }

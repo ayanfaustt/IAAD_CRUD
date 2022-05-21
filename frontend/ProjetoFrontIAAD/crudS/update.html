@@ -28,7 +28,9 @@
         =
         <input type="text" id="new_data">
         <button class="submit_buttons" type="submit" onclick="updateStartup()">Atualizar</button>
+        <span id="response"></span>
     </div>
+    
     <script>
         function updateStartup(){
             const id_S = document.querySelector('#id_startup').value;
@@ -60,7 +62,10 @@
                       "Allow": 'PUT'  
                     }})
                 .then(response => response.json())
-                .then(response => console.log(response))
+                .then(response =>{
+                    const feedback = document.querySelector('#response');
+                    feedback.innerHTML = response.message; 
+                })
                 .catch(err => console.log(err))
 
         }

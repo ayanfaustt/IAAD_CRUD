@@ -70,7 +70,7 @@ server.post('/add/startup', async (req, res)=>{
 
     await db.sync();
 
-    return res.json(novaStartup);
+    return res.status(200).json({message:'Startup adicionada com sucesso !'});
 })
 
 server.delete('/startup/delete/:id_startup', async(req, res)=>{
@@ -88,7 +88,7 @@ server.put('/startup/update/:id_startup', async(req, res)=>{
         await db.sync();
         const {id_startup, nome_startup, cidade_sede} = req.query;
         const startupEdit = await Startup.update({nome_startup, cidade_sede},{where:{id_startup: req.params.id_startup}});
-        return res.status(200).json({message:"Deu bom"})
+        return res.status(200).json({message:"Startup Atualizada com sucesso !"})
 
 });
 
@@ -117,7 +117,7 @@ server.post('/add/linguagem_programacao', async (req, res)=>{
 
     await db.sync();
 
-    return res.json(novaLinguagem);
+    return res.status(200).json({message:'Linguagem adicionada com sucesso !'});
 });
 
 server.delete('/linguagem_programacao/delete/:id_linguagem', async(req, res)=>{
@@ -136,7 +136,7 @@ server.put('/linguagem_programacao/update/:id_linguagem', async(req, res)=>{
     console.log(req.body)
     const {nome_linguagem, ano_lancamento} = req.query;
     const linguagemEdit = await Linguagem.update({nome_linguagem: nome_linguagem, ano_lancamento: ano_lancamento}, {where:{id_linguagem: req.params.id_linguagem}});
-    return res.status(200).json({message:'Deu bom'});
+    return res.status(200).json({message:'Linguagem Atualizada com Sucesso'});
 
 });
 
@@ -189,9 +189,9 @@ server.put('/programador/update/:id_programador', async(req, res)=>{
     try {
         const {id_programador, nome_programador, genero, data_nascimento, email, id_startup } = req.query;
         const linguagemEdit = await Programador.update({nome_programador, genero, data_nascimento, email, id_startup }, {where:{id_programador: req.params.id_programador}});
-        return res.status(200).json({message:'Deu bom'});    
+        return res.status(200).json({message:'Programador Atualizado com Sucesso !'});    
     } catch (error) {
-        return res.status(400).json({message: 'Deu RUim'})
+        return res.status(400).json({message: 'Erro'})
     }
     
 
@@ -235,7 +235,7 @@ server.delete('/programador_linguagem/:id_programador', async(req, res)=>{
     try {
         await db.sync();
         const programadorLinguagem = await Programador_Linguagem.destroy({where:{id_programador: req.params.id_programador}});
-        return res.status(200).json({message:"Deu bom!"})
+        return res.status(200).json({message:"Registro Removido com Sucesso !"})
             
     } catch (error) {
         return res.status(400).json({message:error});

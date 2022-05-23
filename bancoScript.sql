@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `startups`.`linguagem_programaçãos` (
   `id_linguagem` INT NOT NULL,
   `nome_linguagem` TEXT NOT NULL,
   `ano_lancamento` INT NOT NULL,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `createdAt` DATETIME ,
+  `updatedAt` DATETIME ,
   PRIMARY KEY (`id_linguagem`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `startups`.`startups` (
   `id_startup` INT NOT NULL,
   `nome_startup` TEXT NOT NULL,
   `cidade_sede` TEXT NOT NULL,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `createdAt` DATETIME ,
+  `updatedAt` DATETIME ,
   PRIMARY KEY (`id_startup`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `startups`.`programadors` (
   `genero` CHAR(255) NOT NULL,
   `data_nascimento` DATETIME NOT NULL,
   `email` TEXT NOT NULL,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `createdAt` DATETIME ,
+  `updatedAt` DATETIME ,
   `id_startup` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_programador`),
   INDEX `id_startup` (`id_startup` ASC) VISIBLE,
@@ -78,8 +78,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `startups`.`programador_linguagens`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `startups`.`programador_linguagens` (
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL,
+  `createdAt` DATETIME ,
+  `updatedAt` DATETIME ,
   `id_programador` INT NOT NULL,
   `id_linguagem` INT NOT NULL,
   PRIMARY KEY (`id_programador`, `id_linguagem`),

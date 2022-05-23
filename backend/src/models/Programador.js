@@ -37,6 +37,7 @@ Programador.belongsTo(Startup,{
 });
 
 Startup.hasMany(Programador, {
+    constraint: true,
     foreignKey: 'id_startup'
 });
 
